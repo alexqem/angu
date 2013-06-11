@@ -34,15 +34,33 @@
     </script>
   </head>
   <!-- Head / End -->
-<body ng-controller="PhoneListCtrl">
-  <h4>Total number of phones: {{phones.length}}</h4>
-  <ul>
-    <li ng-repeat="phone in phones">
-      <strong>{{hello}}</strong><br>
-      {{phone.name}}
-      <p>{{phone.snippet}}</p>
-    </li>
-  </ul>
+<body>
+
+<div class="container-fluid"  ng-controller="PhoneListCtrl">
+<div class="row-fluid">
+  <div class="span2">
+    <!--Sidebar content-->
+    <h4>Total number of phones: {{phones.length}}</h4>
+    
+    Search: <input ng-model="query">
+
+  </div>
+  <div class="span10">
+    <!--Body content-->
+
+    <ul class="phones">
+      <li ng-repeat="phone in phones | filter:query">
+        {{phone.name}}
+        <p>{{phone.snippet}}</p>
+      </li>
+    </ul>
+
+  </div>
+</div>
+</div>
+
+  
+
   <table>
     <tr><th><h4>row number</th></tr>
     <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"><td>{{i+1}}</td><td>{{i+11}}</td></tr>
