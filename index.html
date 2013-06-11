@@ -1,18 +1,53 @@
 <html ng-app>
   <head>
-  	<!-- Scripts -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="http://code.angularjs.org/1.0.7/angular.min.js"></script>
-    <script></script>
     <!-- Styles -->
     <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="./css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
     <link href="./css/style.css" rel="stylesheet" type="text/css" />
+        <!-- Scripts -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://code.angularjs.org/1.0.7/angular.min.js"></script>
+    <script>
+      function PhoneListCtrl($scope) {
+        $scope.phones = [
+          {"name": "Galaxy S III I747",
+           "snippet": "2X CPU, 2GB RAM, Best I've seen"},
+          {"name": "IPhone 5",
+           "snippet": "For stupid noobs"}
+        ];
+        $scope.hello = "Hello, World!"
+      }
+
+      describe('PhoneCat controllers', function() {
+ 
+        describe('PhoneListCtrl', function(){
+       
+          it('should create "phones" model with 3 phones', function() {
+            var scope = {},
+                ctrl = new PhoneListCtrl(scope);
+       
+            expect(scope.phones.length).toBe(2);
+          });
+
+        });
+      });
+    </script>
   </head>
   <!-- Head / End -->
-  <body>
-    <h2>Mi first Projct</h2>
+<body ng-controller="PhoneListCtrl">
+  <h4>Total number of phones: {{phones.length}}</h4>
+  <ul>
+    <li ng-repeat="phone in phones">
+      <strong>{{hello}}</strong><br>
+      {{phone.name}}
+      <p>{{phone.snippet}}</p>
+    </li>
+  </ul>
+  <table>
+    <tr><th><h4>row number</th></tr>
+    <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"><td>{{i+1}}</td><td>{{i+11}}</td></tr>
+  </table>
 
-  </body>
+</body>
   <!-- Body / End -->
 </html>
